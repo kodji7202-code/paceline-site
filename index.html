@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Paceline: Creator Rewards pace for X</title>
+  <meta name="description" content="Paceline is a Chrome extension for creators on X. Check your posts against engagement-solicitation phrases and estimate when you will qualify for Original Content Rewards. Everything stays in your browser.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="./">Paceline</a>
+    <nav aria-label="Main">
+      <ul>
+        <li><a href="#gates">The gates</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#privacy">Privacy</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main id="main">
+  <div class="wrap hero">
+    <h1>Know exactly when you'll qualify for X's Original Content Rewards</h1>
+    <p class="lead">Paceline is a Chrome extension for creators on X. It warns you before you post something that risks a solicitation strike, and it turns your Analytics export into an estimated qualification date.</p>
+    <p>
+      <a class="btn" href="#pricing">See pricing</a>
+      <a class="btn secondary" href="#features">What it does</a>
+    </p>
+    <p class="note">Paceline is not affiliated with X Corp. All numbers derived from total impressions are estimates.</p>
+  </div>
+
+  <section id="gates" aria-labelledby="gates-h">
+    <div class="wrap">
+      <h2 id="gates-h">The four gates</h2>
+      <p class="intro">Original Content Rewards replaced Creator Revenue Sharing in late summer 2026. To get paid, you need all four of these.</p>
+      <div class="grid">
+        <div class="card"><span class="num">1</span><h3>Active Premium</h3><p>An active Premium, Premium+ or Premium Business subscription.</p></div>
+        <div class="card"><span class="num">2</span><h3>Age 18+</h3><p>You must be at least 18 years old.</p></div>
+        <div class="card"><span class="num">3</span><h3>500 verified followers</h3><p>Followers who are themselves verified on X.</p></div>
+        <div class="card"><span class="num">4</span><h3>500,000 impressions</h3><p>Verified Home Timeline impressions over the prior 90 days. Replies do not count. Only original posts do.</p></div>
+      </div>
+      <p class="note">Also: asking for likes, reposts, follows or replies three or more times can remove you from the program.</p>
+    </div>
+  </section>
+
+  <section id="features" aria-labelledby="features-h">
+    <div class="wrap">
+      <h2 id="features-h">What Paceline does</h2>
+      <p class="intro">Two tools. Both run entirely on your device.</p>
+      <div class="grid">
+        <div class="card">
+          <h3>Compose Guard <span class="tag">Free</span></h3>
+          <p>As you type on x.com, a small badge shows whether the post counts toward rewards. Replies don't count. Quotes with little of your own text are weak. It flags phrases like "like and repost" or "follow for more" and suggests a cleaner ending. It never blocks posting and never edits your text.</p>
+        </div>
+        <div class="card">
+          <h3>Pace Dashboard <span class="tag">Pro</span></h3>
+          <p>Import the content CSV from X Analytics. See the rolling 90-day picture: qualifying impressions with replies excluded, the gap to 500K, your daily pace, an estimated qualification date that accounts for old days dropping out, what leaves the window in the next 7 days, dead days, your top original posts, and a scan of past posts for solicitation phrases.</p>
+        </div>
+      </div>
+      <p class="note">You can try the dashboard with built-in demo data before you buy anything.</p>
+    </div>
+  </section>
+
+  <section id="pricing" aria-labelledby="pricing-h">
+    <div class="wrap">
+      <h2 id="pricing-h">Pricing</h2>
+      <p class="intro">Prices are placeholders until the store goes live. Payment and license keys are handled by Gumroad.</p>
+      <div class="grid">
+        <div class="card">
+          <h3>Free</h3>
+          <p class="price">$0</p>
+          <ul class="checks"><li>Compose Guard on x.com</li><li>Solicitation phrase warnings</li><li>Post type check (original, reply, quote)</li><li>Demo mode for the dashboard</li></ul>
+        </div>
+        <div class="card">
+          <h3>Pro</h3>
+          <p class="price">$7 <small>/ month</small> &nbsp;or&nbsp; $49 <small>/ year</small></p>
+          <ul class="checks"><li>Everything in Free</li><li>Pace Dashboard with your own CSV data</li><li>Projection and drop-off analysis</li><li>History scan for solicitation phrases</li></ul>
+          <a class="btn" href="#pricing" id="buy">Buy Pro (coming soon)</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="privacy" aria-labelledby="privacy-h">
+    <div class="wrap">
+      <h2 id="privacy-h">Your data never leaves your browser</h2>
+      <p class="intro">Paceline has no server, no accounts, no analytics and no telemetry. Your drafts and your CSV files are processed locally and saved only in your browser's extension storage. The only network request is a license check to Gumroad, and only after you enter a license key. Read the <a href="privacy.html">privacy policy</a>.</p>
+    </div>
+  </section>
+
+  <section id="faq" aria-labelledby="faq-h">
+    <div class="wrap">
+      <h2 id="faq-h">FAQ</h2>
+      <details><summary>Is Paceline affiliated with X?</summary><p>No. Paceline is an independent tool and is not affiliated with, endorsed by or sponsored by X Corp. Program rules come from public reporting and can change.</p></details>
+      <details><summary>How accurate is the qualification date?</summary><p>It is an estimate. X does not publish your verified Home Timeline impressions in the Analytics export. Paceline works from total impressions, and you can add a calibration from X's monetization page to scale the numbers. Treat the result as a pace check, not a promise.</p></details>
+      <details><summary>Why are replies excluded?</summary><p>Under the program rules as reported, only original posts count toward the 500,000 impressions. Paceline separates replies from original posts so you can see the number that matters.</p></details>
+      <details><summary>Will Compose Guard stop me from posting?</summary><p>No. It only shows a badge. It does not block, change or send your text anywhere.</p></details>
+      <details><summary>What does Paceline read on x.com?</summary><p>Only the text of the post you are composing, and only inside your browser to show the badge. Nothing is stored or sent.</p></details>
+      <details><summary>How do I get my data from X?</summary><p>Open X Analytics, export the content CSV, then drop the file into the Paceline dashboard. The column names in X's export can vary, so Paceline matches several common names and tells you if something is missing.</p></details>
+    </div>
+  </section>
+</main>
+<footer>
+  <div class="wrap">
+    <p>Paceline &copy; 2026 Claudiu Cojocaru. All rights reserved.</p>
+    <p>Not affiliated with X Corp. "X" is used only to describe the platform Paceline works with.</p>
+    <p><a href="privacy.html">Privacy policy</a></p>
+  </div>
+</footer>
+</body>
+</html>
