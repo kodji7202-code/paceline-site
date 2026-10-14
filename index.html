@@ -2,17 +2,41 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Paceline: Creator Rewards pace for X</title>
   <meta name="description" content="Paceline is a Chrome extension for creators on X. Check your posts against engagement-solicitation phrases and estimate when you will qualify for Original Content Rewards. Everything stays in your browser.">
+  <meta name="theme-color" content="#050505">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Paceline: Creator Rewards pace for X">
+  <meta property="og:description" content="Know exactly when you'll qualify for X's Original Content Rewards. Compose Guard and Pace Dashboard, running entirely in your browser.">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="styles.css">
+  <script>document.documentElement.classList.add('js')</script>
+  <script src="app.js" defer></script>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="pl-mark" viewBox="0 0 36 36">
+      <rect x="1" y="1" width="34" height="34" rx="10" fill="#0d0f0c" stroke="#2a2f25"/>
+      <path d="M11.5 27V9h7.25a5.75 5.75 0 0 1 0 11.5H11.5" fill="none" stroke="#c6ff3d" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M17 26.5l5-4 3.4 2.2L29 19" fill="none" stroke="#c6ff3d" stroke-opacity=".55" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="29" cy="19" r="2.2" fill="#c6ff3d"/>
+    </symbol>
+    <symbol id="x-mark" viewBox="0 0 24 24"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></symbol>
+  </defs>
+</svg>
+
 <a class="skip" href="#main">Skip to content</a>
-<header class="site">
-  <div class="wrap">
-    <a class="brand" href="./">Paceline</a>
-    <nav aria-label="Main">
+<div class="progress" aria-hidden="true"><span></span></div>
+
+<header class="site" id="top">
+  <div class="wrap bar">
+    <a class="brand" href="./" aria-label="Paceline home">
+      <svg class="brand-mark" aria-hidden="true"><use href="#pl-mark"/></svg>
+      <span>Paceline</span>
+    </a>
+    <nav class="nav" id="nav" aria-label="Main">
       <ul>
         <li><a href="#gates">The gates</a></li>
         <li><a href="#features">Features</a></li>
@@ -20,96 +44,319 @@
         <li><a href="#privacy">Privacy</a></li>
         <li><a href="#faq">FAQ</a></li>
       </ul>
+      <a class="btn btn-sm nav-cta" href="#pricing">Get Paceline</a>
     </nav>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav" aria-label="Open menu">
+      <span></span><span></span>
+    </button>
   </div>
 </header>
+
 <main id="main">
-  <div class="wrap hero">
-    <h1>Know exactly when you'll qualify for X's Original Content Rewards</h1>
-    <p class="lead">Paceline is a Chrome extension for creators on X. It warns you before you post something that risks a solicitation strike, and it turns your Analytics export into an estimated qualification date.</p>
-    <p>
-      <a class="btn" href="#pricing">See pricing</a>
-      <a class="btn secondary" href="#features">What it does</a>
-    </p>
-    <p class="note">Paceline is not affiliated with X Corp. All numbers derived from total impressions are estimates.</p>
+  <!-- HERO -->
+  <section class="hero" aria-labelledby="hero-h">
+    <div class="glow g1" data-parallax="0.15" aria-hidden="true"></div>
+    <div class="glow g2" data-parallax="-0.1" aria-hidden="true"></div>
+    <div class="grid-bg" aria-hidden="true"></div>
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <p class="pill" data-reveal>
+          <svg class="x-ico" aria-hidden="true"><use href="#x-mark"/></svg>
+          <span>Works on x.com</span><span class="pill-sep" aria-hidden="true"></span><span class="pill-muted">Chrome extension</span>
+        </p>
+        <h1 id="hero-h" class="headline" data-split>Know exactly when you'll qualify for X's Original Content Rewards</h1>
+        <p class="lead" data-reveal style="--d:.35s">Paceline is a Chrome extension for creators on X. It warns you before you post something that risks a solicitation strike, and it turns your Analytics export into an estimated qualification date.</p>
+        <div class="cta-row" data-reveal style="--d:.45s">
+          <a class="btn btn-shine magnetic" href="#pricing">See pricing <span aria-hidden="true">→</span></a>
+          <a class="btn btn-ghost magnetic" href="#features">What it does</a>
+        </div>
+        <p class="note" data-reveal style="--d:.55s">Paceline is not affiliated with X Corp. All numbers derived from total impressions are estimates.</p>
+      </div>
+
+      <div class="hero-visual" data-reveal style="--d:.3s">
+        <div class="pace-card tilt">
+          <div class="pc-head">
+            <span class="pc-title"><svg class="mini-mark" aria-hidden="true"><use href="#pl-mark"/></svg> Pace</span>
+            <span class="demo-tag">Demo data</span>
+          </div>
+          <div class="pc-body">
+            <div class="ring-wrap">
+              <svg class="ring" viewBox="0 0 120 120" aria-hidden="true">
+                <defs>
+                  <linearGradient id="ringGrad" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0" stop-color="#e8ff9a"/><stop offset="1" stop-color="#7dff3d"/>
+                  </linearGradient>
+                </defs>
+                <circle class="ring-track" cx="60" cy="60" r="52"/>
+                <circle class="ring-fill" id="heroRing" cx="60" cy="60" r="52" data-pct="72.5"/>
+              </svg>
+              <div class="ring-center">
+                <strong><span data-count="72" data-suffix="%">72%</span></strong>
+                <small>to 500K</small>
+              </div>
+            </div>
+            <div class="pc-stats">
+              <p class="pc-label">Qualifying impressions</p>
+              <p class="pc-big"><span data-count="362400">362,400</span><span class="pc-of"> / 500,000</span></p>
+              <p class="chip chip-accent"><span class="dot" aria-hidden="true"></span>Est. qualification: in 23 days</p>
+              <p class="pc-sub">Replies excluded · 90-day window</p>
+            </div>
+          </div>
+          <svg class="spark" viewBox="0 0 300 70" preserveAspectRatio="none" aria-hidden="true">
+            <defs>
+              <linearGradient id="sparkFill" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#c6ff3d" stop-opacity=".35"/><stop offset="1" stop-color="#c6ff3d" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+            <path class="spark-area" d="M0 62 L20 58 L40 60 L60 52 L80 54 L100 46 L120 48 L140 40 L160 42 L180 33 L200 36 L220 26 L240 28 L260 18 L280 14 L300 8 L300 70 L0 70 Z"/>
+            <path class="spark-line" pathLength="1" d="M0 62 L20 58 L40 60 L60 52 L80 54 L100 46 L120 48 L140 40 L160 42 L180 33 L200 36 L220 26 L240 28 L260 18 L280 14 L300 8"/>
+          </svg>
+          <div class="pc-foot">
+            <span>Daily pace <b data-count="5980">5,980</b>/day</span>
+            <span>Leaving in 7d <b class="neg">−<span data-count="18300">18,300</span></b></span>
+          </div>
+        </div>
+        <div class="float-badge fb1" aria-hidden="true"><span class="dot ok"></span>Counts toward rewards</div>
+        <div class="float-badge fb2" aria-hidden="true"><svg class="x-ico" aria-hidden="true"><use href="#x-mark"/></svg>Original post</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>Original posts only</span><i></i><span>90-day rolling window</span><i></i><span>Replies excluded</span><i></i><span>Runs on your device</span><i></i><span>No account needed</span><i></i><span>Solicitation phrase checks</span><i></i>
+      <span>Original posts only</span><i></i><span>90-day rolling window</span><i></i><span>Replies excluded</span><i></i><span>Runs on your device</span><i></i><span>No account needed</span><i></i><span>Solicitation phrase checks</span><i></i>
+    </div>
   </div>
 
-  <section id="gates" aria-labelledby="gates-h">
+  <!-- GATES -->
+  <section id="gates" class="section" aria-labelledby="gates-h">
     <div class="wrap">
-      <h2 id="gates-h">The four gates</h2>
-      <p class="intro">Original Content Rewards replaced Creator Revenue Sharing in late summer 2026. To get paid, you need all four of these.</p>
-      <div class="grid">
-        <div class="card"><span class="num">1</span><h3>Active Premium</h3><p>An active Premium, Premium+ or Premium Business subscription.</p></div>
-        <div class="card"><span class="num">2</span><h3>Age 18+</h3><p>You must be at least 18 years old.</p></div>
-        <div class="card"><span class="num">3</span><h3>500 verified followers</h3><p>Followers who are themselves verified on X.</p></div>
-        <div class="card"><span class="num">4</span><h3>500,000 impressions</h3><p>Verified Home Timeline impressions over the prior 90 days. Replies do not count. Only original posts do.</p></div>
+      <div class="sec-head" data-reveal>
+        <p class="eyebrow">Eligibility</p>
+        <h2 id="gates-h">The four gates</h2>
+        <p class="intro">Original Content Rewards replaced Creator Revenue Sharing in late summer 2026. To get paid, you need all four of these.</p>
       </div>
-      <p class="note">Also: asking for likes, reposts, follows or replies three or more times can remove you from the program.</p>
+      <div class="gates">
+        <article class="gate" data-reveal style="--d:0s">
+          <div class="gate-top"><span class="gate-num">01</span>
+            <svg class="gate-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.6 2.2 3.4-.4.9 3.3 3 1.7-1.3 3.2 1.3 3.2-3 1.7-.9 3.3-3.4-.4L12 22l-2.6-2.2-3.4.4-.9-3.3-3-1.7L3.4 12 2.1 8.8l3-1.7.9-3.3 3.4.4z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M8.5 12.2l2.4 2.3 4.6-4.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>Active Premium</h3>
+          <p>An active Premium, Premium+ or Premium Business subscription.</p>
+        </article>
+        <article class="gate" data-reveal style="--d:.08s">
+          <div class="gate-top"><span class="gate-num">02</span>
+            <svg class="gate-ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M4 21c1.2-4 4.3-6 8-6s6.8 2 8 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          </div>
+          <h3>Age <span class="stat-inline"><span data-count="18">18</span>+</span></h3>
+          <p>You must be at least 18 years old.</p>
+        </article>
+        <article class="gate" data-reveal style="--d:.16s">
+          <div class="gate-top"><span class="gate-num">03</span>
+            <svg class="gate-ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.4" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M2.5 20c.9-3.4 3.4-5.2 6.5-5.2 1.6 0 3 .5 4.1 1.4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M14.5 17.5l2.2 2.2 4.6-4.9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <p class="gate-stat"><span data-count="500">500</span></p>
+          <h3>verified followers</h3>
+          <p>Followers who are themselves verified on X.</p>
+        </article>
+        <article class="gate gate-hero" data-reveal style="--d:.24s">
+          <div class="gate-top"><span class="gate-num">04</span>
+            <svg class="gate-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17l5-5 4 3 8-8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 7h5v5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <p class="gate-stat"><span data-count="500000">500,000</span></p>
+          <h3>impressions</h3>
+          <p>Verified Home Timeline impressions over the prior 90 days. Replies do not count. Only original posts do.</p>
+          <div class="meter" aria-hidden="true"><span></span></div>
+        </article>
+      </div>
+      <div class="callout" data-reveal>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l10 18H2z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M12 10v5M12 18v.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <p><strong>Also:</strong> asking for likes, reposts, follows or replies three or more times can remove you from the program.</p>
+      </div>
     </div>
   </section>
 
-  <section id="features" aria-labelledby="features-h">
+  <!-- FEATURES -->
+  <section id="features" class="section" aria-labelledby="features-h">
     <div class="wrap">
-      <h2 id="features-h">What Paceline does</h2>
-      <p class="intro">Two tools. Both run entirely on your device.</p>
-      <div class="grid">
-        <div class="card">
-          <h3>Compose Guard <span class="tag">Free</span></h3>
+      <div class="sec-head" data-reveal>
+        <p class="eyebrow">Features</p>
+        <h2 id="features-h">What Paceline does</h2>
+        <p class="intro">Two tools. Both run entirely on your device.</p>
+      </div>
+
+      <div class="feature">
+        <div class="feature-copy" data-reveal>
+          <h3 class="feature-title">Compose Guard <span class="tag tag-free">Free</span></h3>
           <p>As you type on x.com, a small badge shows whether the post counts toward rewards. Replies don't count. Quotes with little of your own text are weak. It flags phrases like "like and repost" or "follow for more" and suggests a cleaner ending. It never blocks posting and never edits your text.</p>
+          <ul class="ticks">
+            <li>Live post type check: original, reply, quote</li>
+            <li>Solicitation phrase warnings</li>
+            <li>Never blocks, never edits, never sends</li>
+          </ul>
         </div>
-        <div class="card">
-          <h3>Pace Dashboard <span class="tag">Pro</span></h3>
-          <p>Import the content CSV from X Analytics. See the rolling 90-day picture: qualifying impressions with replies excluded, the gap to 500K, your daily pace, an estimated qualification date that accounts for old days dropping out, what leaves the window in the next 7 days, dead days, your top original posts, and a scan of past posts for solicitation phrases.</p>
+        <div class="feature-visual" data-reveal style="--d:.1s">
+          <div class="composer" id="composer">
+            <div class="cmp-head">
+              <span class="cmp-close" aria-hidden="true">✕</span>
+              <span class="cmp-site"><svg class="x-ico" aria-hidden="true"><use href="#x-mark"/></svg> x.com</span>
+              <span class="cmp-drafts">Drafts</span>
+            </div>
+            <p class="cmp-replying" hidden>Replying to <span>@someone</span></p>
+            <div class="cmp-row">
+              <span class="avatar" aria-hidden="true"></span>
+              <p class="cmp-text" aria-live="off"><span class="cmp-typed">Most creators ignore the 90-day window. Old days drop out every morning. Repost if you agree</span><span class="caret" aria-hidden="true"></span></p>
+            </div>
+            <div class="cmp-foot">
+              <div class="guard" role="status" aria-live="polite">
+                <span class="guard-badge bad"><span class="guard-ico" aria-hidden="true"></span><span class="guard-text">Solicitation phrase: "repost if you agree"</span></span>
+                <span class="guard-tip" hidden></span>
+              </div>
+              <span class="cmp-post">Post</span>
+            </div>
+          </div>
+          <p class="mock-caption">Illustration of Compose Guard on the x.com composer.</p>
         </div>
       </div>
-      <p class="note">You can try the dashboard with built-in demo data before you buy anything.</p>
+
+      <div class="feature feature-rev">
+        <div class="feature-copy" data-reveal>
+          <h3 class="feature-title">Pace Dashboard <span class="tag tag-pro">Pro</span></h3>
+          <p>Import the content CSV from X Analytics. See the rolling 90-day picture: qualifying impressions with replies excluded, the gap to 500K, your daily pace, an estimated qualification date that accounts for old days dropping out, what leaves the window in the next 7 days, dead days, your top original posts, and a scan of past posts for solicitation phrases.</p>
+          <p class="note">You can try the dashboard with built-in demo data before you buy anything.</p>
+        </div>
+        <div class="feature-visual" data-reveal style="--d:.1s">
+          <div class="dash" id="dash">
+            <div class="dash-head">
+              <span class="pc-title"><svg class="mini-mark" aria-hidden="true"><use href="#pl-mark"/></svg> Pace Dashboard</span>
+              <span class="demo-tag">Demo data</span>
+            </div>
+            <div class="tiles">
+              <div class="tile"><p>Qualifying impressions</p><b data-count="362400">362,400</b></div>
+              <div class="tile"><p>Gap to 500K</p><b data-count="137600">137,600</b></div>
+              <div class="tile"><p>Daily pace</p><b><span data-count="5980">5,980</span><small>/day</small></b></div>
+              <div class="tile"><p>Leaving in 7 days</p><b class="neg">−<span data-count="18300">18,300</span></b></div>
+            </div>
+            <div class="chart">
+              <div class="chart-target"><span>500K</span></div>
+              <div class="bars" id="bars" aria-hidden="true"></div>
+              <svg class="proj" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path d="M70 46 L100 4"/></svg>
+              <span class="est-marker">Est. date →</span>
+            </div>
+            <div class="chart-axis"><span>90 days ago</span><span>Today</span><span>Projection</span></div>
+          </div>
+          <p class="mock-caption">Illustration with demo data. Your numbers come from your own CSV.</p>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section id="pricing" aria-labelledby="pricing-h">
+  <!-- PRICING -->
+  <section id="pricing" class="section" aria-labelledby="pricing-h">
     <div class="wrap">
-      <h2 id="pricing-h">Pricing</h2>
-      <p class="intro">Prices are placeholders until the store goes live. Payment and license keys are handled by Gumroad.</p>
-      <div class="grid">
-        <div class="card">
+      <div class="sec-head center" data-reveal>
+        <p class="eyebrow">Pricing</p>
+        <h2 id="pricing-h">Pricing</h2>
+        <p class="intro">Compose Guard is free forever. Pro unlocks the Pace Dashboard. Payment and license keys are handled by Gumroad.</p>
+      </div>
+      <div class="plans">
+        <article class="plan tilt" data-reveal>
           <h3>Free</h3>
           <p class="price">$0</p>
-          <ul class="checks"><li>Compose Guard on x.com</li><li>Solicitation phrase warnings</li><li>Post type check (original, reply, quote)</li><li>Demo mode for the dashboard</li></ul>
-        </div>
-        <div class="card">
+          <ul class="ticks"><li>Compose Guard on x.com</li><li>Solicitation phrase warnings</li><li>Post type check (original, reply, quote)</li><li>Demo mode for the dashboard</li></ul>
+        </article>
+        <article class="plan plan-pro tilt" data-reveal style="--d:.1s">
+          <span class="plan-badge">Pro</span>
           <h3>Pro</h3>
-          <p class="price">$7 <small>/ month</small> &nbsp;or&nbsp; $49 <small>/ year</small></p>
-          <ul class="checks"><li>Everything in Free</li><li>Pace Dashboard with your own CSV data</li><li>Projection and drop-off analysis</li><li>History scan for solicitation phrases</li></ul>
-          <a class="btn" href="#pricing" id="buy">Buy Pro (coming soon)</a>
+          <p class="price"><span class="pg">$7 <small>/ month</small></span> <span class="pg"><span class="price-or">or</span> $49 <small>/ year</small></span></p>
+          <ul class="ticks"><li>Everything in Free</li><li>Pace Dashboard with your own CSV data</li><li>Projection and drop-off analysis</li><li>History scan for solicitation phrases</li></ul>
+          <a class="btn btn-shine btn-block magnetic" href="https://kodji6.gumroad.com/l/anfvdb" id="buy" target="_blank" rel="noopener">Get Pro <span aria-hidden="true">→</span></a>
+          <p class="founding"><span class="dot" aria-hidden="true"></span>Founding 100: code <code>FOUNDING</code> for $2 off</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRIVACY -->
+  <section id="privacy" class="section" aria-labelledby="privacy-h">
+    <div class="wrap privacy-grid">
+      <div class="privacy-copy" data-reveal>
+        <p class="eyebrow">Privacy</p>
+        <h2 id="privacy-h">Your data never leaves your browser</h2>
+        <p class="intro">Paceline has no server, no accounts, no analytics and no telemetry. Your drafts and your CSV files are processed locally and saved only in your browser's extension storage. The only network request is a license check to Gumroad, and only after you enter a license key. Read the <a href="privacy.html">privacy policy</a>.</p>
+        <ul class="nolist">
+          <li><span aria-hidden="true">✕</span> No server</li>
+          <li><span aria-hidden="true">✕</span> No accounts</li>
+          <li><span aria-hidden="true">✕</span> No analytics</li>
+          <li><span aria-hidden="true">✕</span> No telemetry</li>
+        </ul>
+      </div>
+      <div class="privacy-visual" data-reveal style="--d:.1s" aria-hidden="true">
+        <div class="browser">
+          <div class="browser-bar"><i></i><i></i><i></i><span>Your browser</span></div>
+          <div class="browser-body">
+            <div class="orbit o1"><b></b></div>
+            <div class="orbit o2"><b></b></div>
+            <div class="orbit o3"><b></b></div>
+            <div class="shield">
+              <svg viewBox="0 0 24 24"><path d="M12 2.5l8 3v6.2c0 4.8-3.3 8.6-8 9.8-4.7-1.2-8-5-8-9.8V5.5z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><rect x="8.5" y="10.5" width="7" height="5.5" rx="1.2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M10 10.5V9a2 2 0 0 1 4 0v1.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+            </div>
+            <span class="file f1">drafts</span>
+            <span class="file f2">analytics.csv</span>
+            <span class="file f3">settings</span>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="privacy" aria-labelledby="privacy-h">
-    <div class="wrap">
-      <h2 id="privacy-h">Your data never leaves your browser</h2>
-      <p class="intro">Paceline has no server, no accounts, no analytics and no telemetry. Your drafts and your CSV files are processed locally and saved only in your browser's extension storage. The only network request is a license check to Gumroad, and only after you enter a license key. Read the <a href="privacy.html">privacy policy</a>.</p>
+  <!-- FAQ -->
+  <section id="faq" class="section" aria-labelledby="faq-h">
+    <div class="wrap faq-wrap">
+      <div class="sec-head" data-reveal>
+        <p class="eyebrow">FAQ</p>
+        <h2 id="faq-h">FAQ</h2>
+      </div>
+      <div class="faq" data-reveal>
+        <details><summary>Is Paceline affiliated with X?</summary><div class="ans"><p>No. Paceline is an independent tool and is not affiliated with, endorsed by or sponsored by X Corp. Program rules come from public reporting and can change.</p></div></details>
+        <details><summary>How accurate is the qualification date?</summary><div class="ans"><p>It is an estimate. X does not publish your verified Home Timeline impressions in the Analytics export. Paceline works from total impressions, and you can add a calibration from X's monetization page to scale the numbers. Treat the result as a pace check, not a promise.</p></div></details>
+        <details><summary>Why are replies excluded?</summary><div class="ans"><p>Under the program rules as reported, only original posts count toward the 500,000 impressions. Paceline separates replies from original posts so you can see the number that matters.</p></div></details>
+        <details><summary>Will Compose Guard stop me from posting?</summary><div class="ans"><p>No. It only shows a badge. It does not block, change or send your text anywhere.</p></div></details>
+        <details><summary>What does Paceline read on x.com?</summary><div class="ans"><p>Only the text of the post you are composing, and only inside your browser to show the badge. Nothing is stored or sent.</p></div></details>
+        <details><summary>How do I get my data from X?</summary><div class="ans"><p>Open X Analytics, export the content CSV, then drop the file into the Paceline dashboard. The column names in X's export can vary, so Paceline matches several common names and tells you if something is missing.</p></div></details>
+      </div>
     </div>
   </section>
 
-  <section id="faq" aria-labelledby="faq-h">
+  <!-- CTA -->
+  <section class="cta-band" aria-labelledby="cta-h">
     <div class="wrap">
-      <h2 id="faq-h">FAQ</h2>
-      <details><summary>Is Paceline affiliated with X?</summary><p>No. Paceline is an independent tool and is not affiliated with, endorsed by or sponsored by X Corp. Program rules come from public reporting and can change.</p></details>
-      <details><summary>How accurate is the qualification date?</summary><p>It is an estimate. X does not publish your verified Home Timeline impressions in the Analytics export. Paceline works from total impressions, and you can add a calibration from X's monetization page to scale the numbers. Treat the result as a pace check, not a promise.</p></details>
-      <details><summary>Why are replies excluded?</summary><p>Under the program rules as reported, only original posts count toward the 500,000 impressions. Paceline separates replies from original posts so you can see the number that matters.</p></details>
-      <details><summary>Will Compose Guard stop me from posting?</summary><p>No. It only shows a badge. It does not block, change or send your text anywhere.</p></details>
-      <details><summary>What does Paceline read on x.com?</summary><p>Only the text of the post you are composing, and only inside your browser to show the badge. Nothing is stored or sent.</p></details>
-      <details><summary>How do I get my data from X?</summary><p>Open X Analytics, export the content CSV, then drop the file into the Paceline dashboard. The column names in X's export can vary, so Paceline matches several common names and tells you if something is missing.</p></details>
+      <div class="cta-inner" data-reveal>
+        <div class="glow g3" aria-hidden="true"></div>
+        <p class="pill"><svg class="x-ico" aria-hidden="true"><use href="#x-mark"/></svg><span>Built for creators on X</span></p>
+        <h2 id="cta-h">Post with confidence. Know your pace.</h2>
+        <p class="intro">Start with Compose Guard for free. Upgrade to the Pace Dashboard when you want the full 90-day picture.</p>
+        <div class="cta-row center">
+          <a class="btn btn-shine magnetic" href="#pricing">See pricing <span aria-hidden="true">→</span></a>
+          <a class="btn btn-ghost magnetic" href="privacy.html">Privacy policy</a>
+        </div>
+      </div>
     </div>
   </section>
 </main>
-<footer>
-  <div class="wrap">
-    <p>Paceline &copy; 2026 Claudiu Cojocaru. All rights reserved.</p>
-    <p>Not affiliated with X Corp. "X" is used only to describe the platform Paceline works with.</p>
-    <p><a href="privacy.html">Privacy policy</a></p>
+
+<footer class="site-foot">
+  <div class="wrap foot-grid">
+    <div>
+      <a class="brand" href="./" aria-label="Paceline home"><svg class="brand-mark" aria-hidden="true"><use href="#pl-mark"/></svg><span>Paceline</span></a>
+      <p class="foot-tag">Creator Rewards pace for X.</p>
+    </div>
+    <div class="foot-legal">
+      <p>Paceline &copy; 2026 Claudiu Cojocaru. All rights reserved.</p>
+      <p>Not affiliated with X Corp. "X" is used only to describe the platform Paceline works with.</p>
+      <p><a href="privacy.html">Privacy policy</a></p>
+    </div>
   </div>
 </footer>
 </body>
