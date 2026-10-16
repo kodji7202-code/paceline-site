@@ -113,6 +113,8 @@ header.site.scrolled::before { opacity: 1; }
 .lead { font-size: clamp(1.05rem, 1.6vw, 1.22rem); color: var(--muted); max-width: 36rem; margin-bottom: 2rem; line-height: 1.6; }
 .cta-row { display: flex; flex-wrap: wrap; gap: .75rem; }
 .cta-row.center { justify-content: center; }
+.cta-note { font-size: .88rem; color: var(--muted); margin-top: 1rem; }
+.btn-ico { width: 1.2em; height: 1.2em; flex: none; }
 .note { font-size: .88rem; color: var(--dim); margin-top: 1.4rem; }
 
 /* hero visual */
